@@ -30,19 +30,26 @@ Responsibilities:
 
 ## 2. Architecture
 
-```mermaid
-flowchart TB
-    Client[Client / Swagger UI]
-    Catalog[Movie Catalog Service]
-    History[Watch History Service]
-    CatalogDB[(Movie Catalog SQLite DB)]
-    HistoryDB[(Watch History SQLite DB)]
 
-    Client --> Catalog
-    Client --> History
-    History -->|Validate movie ID| Catalog
-    Catalog --> CatalogDB
-    History --> HistoryDB
+```mermaid
+flowchart TD
+    Client["Client / API Consumer"]
+
+    subgraph Kubernetes["Kubernetes Cluster"]
+        Catalog["Movie Catalog Service<br/>FastAPI :8001"]
+        History["Watch History Service<br/>FastAPI :8002"]
+
+        CatalogDB[("Movie Catalog Database")]
+        HistoryDB[("Watch History Database")]
+
+        Catalog --> CatalogDB
+        History --> HistoryDB
+        History -->|Validate movie ID| Catalog
+    end
+
+    Client -->|Movie requests| Catalog
+    Client -->|Watch history requests| History
+```
 
 
 The services communicate through Kubernetes service discovery.
