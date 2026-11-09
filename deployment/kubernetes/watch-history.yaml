@@ -1,0 +1,56 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: watch-history
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: watch-history
+  template:
+    metadata:
+      labels:
+        app: watch-history
+    spec:
+      containers:
+        - name: watch-history
+          image: watch-history-service:v1
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 8002
+          env:
+            - name: CATALOG_URL
+              value: "http://movie-catalog-service:8001"
+          volumeMounts:
+            - name: history-storage
+              mountPath: /data
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 8002
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 8002
+            initialDelaySeconds: 15
+            periodSeconds: 20
+      volumes:
+        - name: history-storage
+          persistentVolumeClaim:
+            claimName: watch-history-pvc
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: watch-history-service
+spec:
+  type: NodePort
+  selector:
+    app: watch-history
+  ports:
+    - name: http
+      port: 8002
+      targetPort: 8002
+      nodePort: 30082

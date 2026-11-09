@@ -1,0 +1,6 @@
+[submodule "movie-catalog-service"]
+	path = movie-catalog-service
+	url = https://github.com/SatyaBITS264/movie-catalog-service.git
+[submodule "watch-history-service"]
+	path = watch-history-service
+	url = https://github.com/SatyaBITS264/watch-history-service.git
