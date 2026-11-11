@@ -4,6 +4,21 @@ A cloud-native Movie Streaming Management System developed using Python, FastAPI
 
 The application follows a microservices architecture with independently deployable services for movie catalog management and user watch history. The project also demonstrates persistent storage, horizontal pod autoscaling, API testing, and automated CI/CD workflows using GitHub Actions.
 
+## Architecture Diagram
+
+![Movie Streaming Management System Architecture](architecture.png)
+
+## Project Resources
+
+| Resource | Description |
+|---|---|
+| [Architecture Diagram](architecture.png) | Visual system architecture |
+| [Postman Collection](postman_collection.json) | Importable API test collection |
+| [Deployment Guide](docs/deployment/deployment-guide.md) | Kubernetes deployment instructions |
+| [API Reference](docs/api/api-reference.md) | REST API documentation |
+| [Architecture Documentation](docs/architecture/architecture.md) | Detailed architecture |
+
+
 ## 1. Project Overview
 
 The system consists of two microservices.

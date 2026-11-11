@@ -1,0 +1,217 @@
+{
+  "info": {
+    "_postman_id": "f73a324d-13a1-4be7-adeb-662d9593768f",
+    "name": "Movie Streaming Management System API Tests",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "60102754"
+  },
+  "item": [
+    {
+      "name": "Movie Catalog",
+      "item": [
+        {
+          "name": "01 - Movie Catalog Health Check",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://127.0.0.1:8004/health",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8004",
+              "path": [
+                "health"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "02 - Create Movie",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": 102,\n  \"title\": \"Postman Collection Test\",\n  \"genre\": \"Science Fiction\",\n  \"release_year\": 2025\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8004/movies",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8004",
+              "path": [
+                "movies"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "03 - Get All Movies",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://127.0.0.1:8004/movies",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8004",
+              "path": [
+                "movies"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "04 - Get Movie by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://127.0.0.1:8004/movies/6",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8004",
+              "path": [
+                "movies",
+                "6"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "05 - Invalid Movie ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://127.0.0.1:8004/movies/99999",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8004",
+              "path": [
+                "movies",
+                "99999"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Watch History",
+      "item": [
+        {
+          "name": "06 - Watch History Health Check",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://127.0.0.1:8003/health",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8003",
+              "path": [
+                "health"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "07 - Create Watch History",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"user_id\": \"postman_user101\",\r\n  \"movie_id\": 6\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8003/history",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8003",
+              "path": [
+                "history"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "08 - Get User Watch History",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://127.0.0.1:8003/history/postman_user101",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8003",
+              "path": [
+                "history",
+                "postman_user101"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}
